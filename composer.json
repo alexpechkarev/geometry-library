@@ -1,0 +1,29 @@
+{
+	"name": "alexpechkarev/geometry-library",
+	"description": "PHP Geometry library provides utility functions for the computation of geometric data on the surface of the Earth.",
+        "version":"1.0.0",
+	"keywords": ["google maps geometry library", "php geometry library", "spherical geometry utilities", "encoding and decoding polyline paths utilities", "computations polygons and polylines"],
+        "homepage":"https://alexpechkarev.github.io/geometry-library/",
+	"license": "MIT",
+        "authors": [
+            {
+                "name": "Alexander Pechkarev",
+                "email": "alexpechkarev@gmail.com"
+            }
+        ],    
+        "minimum-stability": "stable",
+        
+	"autoload": {
+		"psr-4": {
+			"GeometryLibrary\\": "src/"
+		}
+	},        
+        
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+    
+	
+}
