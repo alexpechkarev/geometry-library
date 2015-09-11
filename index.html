@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Geometry-library : PHP Geometry Library provides utility functions for the computation of geometric data on the surface of the Earth. Code ported from Google Maps Android API.">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Geometry-library</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/alexpechkarev/geometry-library">View on GitHub</a>
+
+          <h1 id="project_title">Geometry-library</h1>
+          <h2 id="project_tagline">PHP Geometry Library provides utility functions for the computation of geometric data on the surface of the Earth. Code ported from Google Maps Android API.</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/alexpechkarev/geometry-library/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/alexpechkarev/geometry-library/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h2>
+<a id="geometry-library-google-maps-api-v3" class="anchor" href="#geometry-library-google-maps-api-v3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Geometry Library Google Maps API V3</h2>
+
+<p>PHP Geometry Library provides utility functions for the computation of geometric data on the surface of the Earth. Code ported from Google <a href="https://github.com/googlemaps/android-maps-utils/">Maps Android API</a>.</p>
+
+<h2>
+<a id="features" class="anchor" href="#features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h2>
+
+<ul>
+<li>
+<a href="https://developers.google.com/maps/documentation/javascript/reference#spherical">Spherical</a> contains spherical geometry utilities allowing you to compute angles, distances and areas from latitudes and longitudes.</li>
+<li>
+<a href="https://developers.google.com/maps/documentation/javascript/reference#poly">Poly</a> utility functions for computations involving polygons and polylines.</li>
+<li>
+<a href="https://developers.google.com/maps/documentation/javascript/reference#encoding">Encoding</a> utilities for polyline encoding and decoding.</li>
+</ul>
+
+<h2>
+<a id="dependency" class="anchor" href="#dependency" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dependency</h2>
+
+<ul>
+<li><a href="http://php.net/">PHP 5</a></li>
+</ul>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>Issue following command:</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1"><span class="pl-c1">composer</span> <span class="pl-k">require</span> <span class="pl-c1">alexpechkarev</span><span class="pl-k">/</span><span class="pl-c1">geometry</span><span class="pl-k">-</span><span class="pl-c1">library</span>:<span class="pl-c1">1.0</span></span></pre></div>
+
+<p>Alternatively  edit composer.json by adding following line and run <strong><code>composer update</code></strong></p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1"><span class="pl-s"><span class="pl-pds">"</span>require<span class="pl-pds">"</span></span>: { </span>
+<span class="pl-s1">        <span class="pl-k">....</span>,</span>
+<span class="pl-s1">        <span class="pl-s"><span class="pl-pds">"</span>alexpechkarev/geometry-library<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>1.0<span class="pl-pds">"</span></span>,</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">    },</span></pre></div>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>Here is an example of using GeometryLibrary:</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1"><span class="pl-smi">$response</span> <span class="pl-k">=</span>  <span class="pl-c1">\GeometryLibrary\</span><span class="pl-c1">SphericalUtil</span><span class="pl-k">::</span>computeHeading(</span>
+<span class="pl-s1">                [<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">25.775</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">80.190</span>], <span class="pl-c">// from array [lat, lng]</span></span>
+<span class="pl-s1">                [<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">21.774</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">80.190</span>]); <span class="pl-c">// to array [lat, lng]</span></span>
+<span class="pl-s1">  <span class="pl-c1">echo</span> <span class="pl-smi">$response</span>; <span class="pl-c">// -180</span></span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-smi">$response</span> <span class="pl-k">=</span> <span class="pl-c1">\GeometryLibrary\</span><span class="pl-c1">SphericalUtil</span><span class="pl-k">::</span>computeDistanceBetween(</span>
+<span class="pl-s1">              [<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">25.775</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">80.190</span>], <span class="pl-c">//from array [lat, lng]</span></span>
+<span class="pl-s1">              [<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">21.774</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">80.190</span>]); <span class="pl-c">// to array [lat, lng]</span></span>
+<span class="pl-s1"></span>
+<span class="pl-s1">  <span class="pl-c1">echo</span> <span class="pl-smi">$response</span>; <span class="pl-c">// 444891.52998049          </span></span>
+<span class="pl-s1"></span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-smi">$response</span> <span class="pl-k">=</span>  <span class="pl-c1">\GeometryLibrary\</span><span class="pl-c1">PolyUtil</span><span class="pl-k">::</span>isLocationOnEdge(</span>
+<span class="pl-s1">              [<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">25.774</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">80.190</span>], <span class="pl-c">// point array [lat, lng]</span></span>
+<span class="pl-s1">              [ <span class="pl-c">// poligon arrays of [lat, lng]</span></span>
+<span class="pl-s1">                [<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">25.774</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">80.190</span>], </span>
+<span class="pl-s1">                [<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">18.466</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">66.118</span>], </span>
+<span class="pl-s1">                [<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">32.321</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">64.757</span>]</span>
+<span class="pl-s1">              ])  ;</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">  <span class="pl-c1">echo</span> <span class="pl-smi">$response</span>; <span class="pl-c">// true</span></span>
+<span class="pl-s1"></span>
+<span class="pl-s1"></span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-smi">$response</span> <span class="pl-k">=</span>  <span class="pl-c1">\GeometryLibrary\</span><span class="pl-c1">PolyUtil</span><span class="pl-k">::</span>isLocationOnPath(</span>
+<span class="pl-s1">              [<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">25.771</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">80.190</span>], <span class="pl-c">// point array [lat, lng]</span></span>
+<span class="pl-s1">             [ <span class="pl-c">// poligon arrays of [lat, lng]</span></span>
+<span class="pl-s1">              [<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">25.774</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">80.190</span>], </span>
+<span class="pl-s1">              [<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">18.466</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">66.118</span>], </span>
+<span class="pl-s1">              [<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">32.321</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">64.757</span>]</span>
+<span class="pl-s1">             ]);  </span>
+<span class="pl-s1"></span>
+<span class="pl-s1">  <span class="pl-c1">echo</span> <span class="pl-smi">$response</span>; <span class="pl-c">// false  </span></span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-smi">$response</span> <span class="pl-k">=</span>  <span class="pl-c1">\GeometryLibrary\</span><span class="pl-c1">PolyUtil</span><span class="pl-k">::</span>containsLocation(</span>
+<span class="pl-s1">              [<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">23.886</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">65.269</span>], <span class="pl-c">// point array [lat, lng]</span></span>
+<span class="pl-s1">             [ <span class="pl-c">// poligon arrays of [lat, lng]</span></span>
+<span class="pl-s1">                [<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">25.774</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">80.190</span>], </span>
+<span class="pl-s1">                [<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">18.466</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">66.118</span>], </span>
+<span class="pl-s1">                [<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">32.321</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">64.757</span>]</span>
+<span class="pl-s1">             ]);  </span>
+<span class="pl-s1"></span>
+<span class="pl-s1">  <span class="pl-c1">echo</span> <span class="pl-smi">$response</span>; <span class="pl-c">// false    </span></span>
+<span class="pl-s1"></span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-smi">$response</span> <span class="pl-k">=</span>  <span class="pl-c1">\GeometryLibrary\</span><span class="pl-c1">PolyUtil</span><span class="pl-k">::</span>encode(</span>
+<span class="pl-s1">              [ </span>
+<span class="pl-s1">                [<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">38.5</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">120.2</span>], </span>
+<span class="pl-s1">                [<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">40.7</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">120.95</span>], </span>
+<span class="pl-s1">                [<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">43.252</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">126.453</span>]</span>
+<span class="pl-s1">              ]);</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">  <span class="pl-c1">echo</span> <span class="pl-smi">$response</span>; <span class="pl-c">// '_p~iF~ps|U_ulLnnqC_mqNvxq`@'</span></span>
+<span class="pl-s1"></span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-smi">$response</span> <span class="pl-k">=</span>  <span class="pl-c1">\GeometryLibrary\</span><span class="pl-c1">PolyUtil</span><span class="pl-k">::</span>decode(<span class="pl-s"><span class="pl-pds">'</span>_p~iF~ps|U_ulLnnqC_mqNvxq`@<span class="pl-pds">'</span></span>);  </span>
+<span class="pl-s1"></span>
+<span class="pl-s1">  <span class="pl-c1">echo</span> <span class="pl-smi">$response</span>; <span class="pl-c">/** array (size=3)</span></span>
+<span class="pl-s1"><span class="pl-c">                        0 =&gt; </span></span>
+<span class="pl-s1"><span class="pl-c">                          array (size=2)</span></span>
+<span class="pl-s1"><span class="pl-c">                            'lat' =&gt; float 38.5</span></span>
+<span class="pl-s1"><span class="pl-c">                            'lng' =&gt; float -120.2</span></span>
+<span class="pl-s1"><span class="pl-c">                        1 =&gt; </span></span>
+<span class="pl-s1"><span class="pl-c">                          array (size=2)</span></span>
+<span class="pl-s1"><span class="pl-c">                            'lat' =&gt; float 40.7</span></span>
+<span class="pl-s1"><span class="pl-c">                            'lng' =&gt; float -120.95</span></span>
+<span class="pl-s1"><span class="pl-c">                        2 =&gt; </span></span>
+<span class="pl-s1"><span class="pl-c">                          array (size=2)</span></span>
+<span class="pl-s1"><span class="pl-c">                            'lat' =&gt; float 43.252</span></span>
+<span class="pl-s1"><span class="pl-c">                            'lng' =&gt; float -126.453</span></span>
+<span class="pl-s1"><span class="pl-c">                   */</span></span>
+<span class="pl-s1"></span></pre></div>
+
+<h2>
+<a id="available-methods" class="anchor" href="#available-methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>Available methods</h2>
+
+<h2>
+<a id="polyutil-class" class="anchor" href="#polyutil-class" aria-hidden="true"><span class="octicon octicon-link"></span></a>PolyUtil class</h2>
+
+<ul>
+<li><a href="#containsLocation"><code>containsLocation($point, $polygon, $geodesic = false)</code></a></li>
+<li><a href="#isLocationOnEdge"><code>isLocationOnEdge($point, $polygon, $tolerance = self::DEFAULT_TOLERANCE, $geodesic = true)</code></a></li>
+<li><a href="#isLocationOnPath"><code>isLocationOnPath($point, $polyline, $tolerance = self::DEFAULT_TOLERANCE, $geodesic = true)</code></a></li>
+<li><a href="#decode"><code>decode($encodedPath)</code></a></li>
+<li><a href="#encode"><code>encode($path)</code></a></li>
+</ul>
+
+<h2>
+<a id="sphericalutil-class" class="anchor" href="#sphericalutil-class" aria-hidden="true"><span class="octicon octicon-link"></span></a>SphericalUtil class</h2>
+
+<ul>
+<li><a href="#computeHeading"><code>computeHeading($from, $to)</code></a></li>
+<li><a href="#computeOffset"><code>computeOffset($from, $distance, $heading)</code></a></li>
+<li><a href="#computeOffsetOrigin"><code>computeOffsetOrigin($to, $distance,  $heading)</code></a></li>
+<li><a href="#interpolate"><code>interpolate($from, $to, $fraction)</code></a></li>
+<li><a href="#computeDistanceBetween"><code>computeDistanceBetween( $from, $to)</code></a></li>
+<li><a href="#computeLength"><code>computeLength($path)</code></a></li>
+<li><a href="#computeArea"><code>computeArea($path)</code></a></li>
+<li><a href="#computeSignedArea"><code>computeSignedArea($path)</code></a></li>
+</ul>
+
+<hr>
+
+<p><a name="containsLocation"></a>
+<strong><code>containsLocation( $point, $polygon, $geodesic = false )</code></strong> - To find whether a given point falls within a polygon</p>
+
+<ul>
+<li>
+<code>$point</code> -  ['lat' =&gt; 38.5, 'lng' =&gt; -120.2 ]</li>
+<li>
+<code>$polygon</code> - [ ['lat' =&gt; 38.5, 'lng' =&gt; -120.2], ['lat' =&gt; 40.7, 'lng' =&gt; -120.95], ['lat' =&gt; 43.252, 'lng' =&gt; -126.453]]</li>
+<li>
+<code>$geodesic</code> - boolean</li>
+</ul>
+
+<p>Returns boolean</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-smi">$response</span> <span class="pl-k">=</span>  <span class="pl-c1">\GeometryLibrary\</span><span class="pl-c1">PolyUtil</span><span class="pl-k">::</span>containsLocation(</span>
+<span class="pl-s1">              [<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">23.886</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">65.269</span>], <span class="pl-c">// point array [lat, lng]</span></span>
+<span class="pl-s1">             [ <span class="pl-c">// poligon arrays of [lat, lng]</span></span>
+<span class="pl-s1">                [<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">25.774</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">80.190</span>], </span>
+<span class="pl-s1">                [<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">18.466</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">66.118</span>], </span>
+<span class="pl-s1">                [<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">32.321</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">64.757</span>]</span>
+<span class="pl-s1">             ]);  </span>
+<span class="pl-s1"></span>
+<span class="pl-s1">  <span class="pl-c1">echo</span> <span class="pl-smi">$response</span>; <span class="pl-c">// false</span></span>
+<span class="pl-s1"></span></pre></div>
+
+<hr>
+
+<p><a name="isLocationOnEdge"></a>
+<strong><code>isLocationOnEdge( $point, $polygon, $tolerance = self::DEFAULT_TOLERANCE, $geodesic = true )</code></strong> - To determine whether a point falls on or near a polyline, or on or near the edge of a polygon, within a specified tolerance in meters.</p>
+
+<ul>
+<li>
+<code>$point</code> -  ['lat' =&gt; 25.774, 'lng' =&gt; -80.190 ]</li>
+<li>
+<code>$polygon</code> -  [ ['lat' =&gt; 38.5, 'lng' =&gt; -120.2], ['lat' =&gt; 40.7, 'lng' =&gt; -120.95], ['lat' =&gt; 43.252, 'lng' =&gt; -126.453]]</li>
+<li>
+<code>$tolerance</code> -  tolerance value in degrees</li>
+<li>
+<code>$geodesic</code> - boolean</li>
+</ul>
+
+<p>Returns boolean</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-smi">$response</span> <span class="pl-k">=</span>  <span class="pl-c1">\GeometryLibrary\</span><span class="pl-c1">PolyUtil</span><span class="pl-k">::</span>isLocationOnEdge(</span>
+<span class="pl-s1">              [<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">25.774</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">80.190</span>], <span class="pl-c">// point array [lat, lng]</span></span>
+<span class="pl-s1">              [ <span class="pl-c">// poligon arrays of [lat, lng]</span></span>
+<span class="pl-s1">                [<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">25.774</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">80.190</span>], </span>
+<span class="pl-s1">                [<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">18.466</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">66.118</span>], </span>
+<span class="pl-s1">                [<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">32.321</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">64.757</span>]</span>
+<span class="pl-s1">              ])  ;</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">  <span class="pl-c1">echo</span> <span class="pl-smi">$response</span>; <span class="pl-c">// true</span></span>
+<span class="pl-s1"></span></pre></div>
+
+<hr>
+
+<p><a name="isLocationOnPath"></a>
+<strong><code>isLocationOnPath( $point, $polygon, $tolerance = self::DEFAULT_TOLERANCE, $geodesic = true )</code></strong> - To determine whether a point falls on or near a polyline, within a specified tolerance in meters</p>
+
+<ul>
+<li>
+<code>$point</code> -  ['lat' =&gt; 25.774, 'lng' =&gt; -80.190 ]</li>
+<li>
+<code>$polygon</code> -  [ ['lat' =&gt; 38.5, 'lng' =&gt; -120.2], ['lat' =&gt; 40.7, 'lng' =&gt; -120.95], ['lat' =&gt; 43.252, 'lng' =&gt; -126.453]]</li>
+<li>
+<code>$tolerance</code> -  tolerance value in degrees</li>
+<li>
+<code>$geodesic</code> - boolean</li>
+</ul>
+
+<p>Returns boolean</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-smi">$response</span> <span class="pl-k">=</span>  <span class="pl-c1">\GeometryLibrary\</span><span class="pl-c1">PolyUtil</span><span class="pl-k">::</span>isLocationOnPath(</span>
+<span class="pl-s1">              [<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">25.774</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">80.190</span>], <span class="pl-c">// point array [lat, lng]</span></span>
+<span class="pl-s1">              [ <span class="pl-c">// poligon arrays of [lat, lng]</span></span>
+<span class="pl-s1">                [<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">25.774</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">80.190</span>], </span>
+<span class="pl-s1">                [<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">18.466</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">66.118</span>], </span>
+<span class="pl-s1">                [<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">32.321</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">64.757</span>]</span>
+<span class="pl-s1">              ])  ;</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">  <span class="pl-c1">echo</span> <span class="pl-smi">$response</span>; <span class="pl-c">// true</span></span>
+<span class="pl-s1"></span></pre></div>
+
+<hr>
+
+<p><a name="decode"></a>
+<strong><code>decode( $encodedPath )</code></strong> - Decodes an encoded path string into a sequence of LatLngs.</p>
+
+<ul>
+<li>
+<code>$encodedPath</code> - string '_p~iF~ps|U_ulLnnqC_mqNvxq`@'</li>
+</ul>
+
+<p>Returns array</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-smi">$response</span> <span class="pl-k">=</span>  <span class="pl-c1">\GeometryLibrary\</span><span class="pl-c1">PolyUtil</span><span class="pl-k">::</span>decode(<span class="pl-s"><span class="pl-pds">'</span>_p~iF~ps|U_ulLnnqC_mqNvxq`@<span class="pl-pds">'</span></span>);  </span>
+<span class="pl-s1"></span>
+<span class="pl-s1">  <span class="pl-c1">echo</span> <span class="pl-smi">$response</span>; <span class="pl-c">/** array (size=3)</span></span>
+<span class="pl-s1"><span class="pl-c">                        0 =&gt; </span></span>
+<span class="pl-s1"><span class="pl-c">                          array (size=2)</span></span>
+<span class="pl-s1"><span class="pl-c">                            'lat' =&gt; float 38.5</span></span>
+<span class="pl-s1"><span class="pl-c">                            'lng' =&gt; float -120.2</span></span>
+<span class="pl-s1"><span class="pl-c">                        1 =&gt; </span></span>
+<span class="pl-s1"><span class="pl-c">                          array (size=2)</span></span>
+<span class="pl-s1"><span class="pl-c">                            'lat' =&gt; float 40.7</span></span>
+<span class="pl-s1"><span class="pl-c">                            'lng' =&gt; float -120.95</span></span>
+<span class="pl-s1"><span class="pl-c">                        2 =&gt; </span></span>
+<span class="pl-s1"><span class="pl-c">                          array (size=2)</span></span>
+<span class="pl-s1"><span class="pl-c">                            'lat' =&gt; float 43.252</span></span>
+<span class="pl-s1"><span class="pl-c">                            'lng' =&gt; float -126.453</span></span>
+<span class="pl-s1"><span class="pl-c">                   */</span></span>
+<span class="pl-s1"></span></pre></div>
+
+<hr>
+
+<p><a name="encode"></a>
+<strong><code>encode( $path )</code></strong> - Encodes a sequence of LatLngs into an encoded path string.</p>
+
+<ul>
+<li>
+<code>$path</code> -  [ ['lat' =&gt; 38.5, 'lng' =&gt; -120.2], ['lat' =&gt; 40.7, 'lng' =&gt; -120.95], ['lat' =&gt; 43.252, 'lng' =&gt; -126.453] ]</li>
+</ul>
+
+<p>Returns string</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-smi">$response</span> <span class="pl-k">=</span>  <span class="pl-c1">\GeometryLibrary\</span><span class="pl-c1">PolyUtil</span><span class="pl-k">::</span>encode(</span>
+<span class="pl-s1">              [ </span>
+<span class="pl-s1">                [<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">38.5</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">120.2</span>], </span>
+<span class="pl-s1">                [<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">40.7</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">120.95</span>], </span>
+<span class="pl-s1">                [<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">43.252</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">126.453</span>]</span>
+<span class="pl-s1">              ]);</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">  <span class="pl-c1">echo</span> <span class="pl-smi">$response</span>; <span class="pl-c">// '_p~iF~ps|U_ulLnnqC_mqNvxq`@'</span></span>
+<span class="pl-s1"></span></pre></div>
+
+<hr>
+
+<p><a name="computeHeading"></a>
+<strong><code>computeHeading( $from, $to )</code></strong> - Returns the heading from one LatLng to another LatLng.</p>
+
+<ul>
+<li>
+<code>$from</code> -  ['lat' =&gt; 38.5, 'lng' =&gt; -120.2]</li>
+<li>
+<code>$to</code> -  ['lat' =&gt; 40.7, 'lng' =&gt; -120.95]</li>
+</ul>
+
+<p>Returns int</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-smi">$response</span> <span class="pl-k">=</span>  <span class="pl-c1">\GeometryLibrary\</span><span class="pl-c1">SphericalUtil</span><span class="pl-k">::</span>computeHeading(</span>
+<span class="pl-s1">              [<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">25.775</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">80.190</span>], </span>
+<span class="pl-s1">              [<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">21.774</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">80.190</span>]));</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">  <span class="pl-c1">echo</span> <span class="pl-smi">$response</span>; <span class="pl-c">// -180</span></span>
+<span class="pl-s1"></span></pre></div>
+
+<hr>
+
+<p><a name="computeOffset"></a>
+<strong><code>computeOffset( $from, $distance, $heading )</code></strong> - Returns the LatLng resulting from moving a distance from an origin in the specified heading.</p>
+
+<ul>
+<li>
+<code>$from</code> -  ['lat' =&gt; 38.5, 'lng' =&gt; -120.2]</li>
+<li>
+<code>$distance</code> - number, the distance to travel</li>
+<li>
+<code>$heading</code> - number, the heading in degrees clockwise from north</li>
+</ul>
+
+<p>Returns array</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-smi">$response</span> <span class="pl-k">=</span>  <span class="pl-c1">\GeometryLibrary\</span><span class="pl-c1">SphericalUtil</span><span class="pl-k">::</span>computeOffset([<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">25.775</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">80.190</span>], <span class="pl-c1">152</span>, <span class="pl-c1">120</span>);</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">  <span class="pl-c1">echo</span> <span class="pl-smi">$response</span>; <span class="pl-c">/** array (size=2)</span></span>
+<span class="pl-s1"><span class="pl-c">                      'lat' =&gt; float 25.774316510639</span></span>
+<span class="pl-s1"><span class="pl-c">                      'lng' =&gt; float -80.188685385944</span></span>
+<span class="pl-s1"><span class="pl-c">                  */</span></span>
+<span class="pl-s1"></span></pre></div>
+
+<hr>
+
+<p><a name="computeOffsetOrigin"></a>
+<strong><code>computeOffsetOrigin( $from, $distance, $heading )</code></strong> - Returns the location of origin when provided with a LatLng destination, meters travelled and original heading. Headings are expressed in degrees clockwise from North. </p>
+
+<ul>
+<li>
+<code>$from</code> -  ['lat' =&gt; 38.5, 'lng' =&gt; -120.2]</li>
+<li>
+<code>$distance</code> - number, the distance to travel</li>
+<li>
+<code>$heading</code> - number, the heading in degrees clockwise from north</li>
+</ul>
+
+<p>Returns array </p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-smi">$response</span> <span class="pl-k">=</span>  <span class="pl-c1">\GeometryLibrary\</span><span class="pl-c1">SphericalUtil</span><span class="pl-k">::</span>computeOffsetOrigin([<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">25.775</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">80.190</span>], <span class="pl-c1">152</span>, <span class="pl-c1">120</span>);</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">  <span class="pl-c1">echo</span> <span class="pl-smi">$response</span>; <span class="pl-c">/** array (size=2)</span></span>
+<span class="pl-s1"><span class="pl-c">                        'lat' =&gt; float 14.33435503928</span></span>
+<span class="pl-s1"><span class="pl-c">                        'lng' =&gt; float -263248.24242931</span></span>
+<span class="pl-s1"><span class="pl-c">                  */</span></span>
+<span class="pl-s1"></span></pre></div>
+
+<hr>
+
+<p><a name="interpolate"></a>
+<strong><code>interpolate( $from, $to, $fraction )</code></strong> - Returns the LatLng which lies the given fraction of the way between the origin LatLng and the destination LatLng.</p>
+
+<ul>
+<li>
+<code>$from</code> -  ['lat' =&gt; 38.5, 'lng' =&gt; -120.2]</li>
+<li>
+<code>$to</code> -  ['lat' =&gt; 38.5, 'lng' =&gt; -120.2]</li>
+<li>
+<code>$fraction</code> - number, a fraction of the distance to travel</li>
+</ul>
+
+<p>Returns array</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-smi">$response</span> <span class="pl-k">=</span>  <span class="pl-c1">\GeometryLibrary\</span><span class="pl-c1">SphericalUtil</span><span class="pl-k">::</span>interpolate([<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">25.775</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">80.190</span>], </span>
+<span class="pl-s1">                                                          [<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">26.215</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">81.218</span>], <span class="pl-c1">2</span>);</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">  <span class="pl-c1">echo</span> <span class="pl-smi">$response</span>; <span class="pl-c">/** array (size=2)</span></span>
+<span class="pl-s1"><span class="pl-c">                      'lat' =&gt; float 26.647635362403</span></span>
+<span class="pl-s1"><span class="pl-c">                      'lng' =&gt; float -82.253737943391</span></span>
+<span class="pl-s1"><span class="pl-c">                  */</span></span>
+<span class="pl-s1"></span></pre></div>
+
+<hr>
+
+<p><a name="computeDistanceBetween"></a>
+<strong><code>computeDistanceBetween( $from, $to )</code></strong> - Returns the distance, in meters, between two LatLngs. You can optionally specify a custom radius. The radius defaults to the radius of the Earth.</p>
+
+<ul>
+<li>
+<code>$from</code> - ['lat' =&gt; 38.5, 'lng' =&gt; -120.2]</li>
+<li>
+<code>$to</code> - ['lat' =&gt; 38.5, 'lng' =&gt; -120.2]</li>
+</ul>
+
+<p>Returns float</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-smi">$response</span> <span class="pl-k">=</span>  <span class="pl-c1">\GeometryLibrary\</span><span class="pl-c1">SphericalUtil</span><span class="pl-k">::</span>computeDistanceBetween([<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">25.775</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">80.190</span>], [<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">26.215</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">81.218</span>]);</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">  <span class="pl-c1">echo</span> <span class="pl-smi">$response</span>; <span class="pl-c">//float 113797.92421349</span></span>
+<span class="pl-s1"></span></pre></div>
+
+<hr>
+
+<p><a name="computeLength"></a>
+<strong><code>computeLength( $path )</code></strong> - Returns the length of the given path, in meters, on Earth.</p>
+
+<ul>
+<li>
+<code>$path</code> - [ ['lat' =&gt; 38.5, 'lng' =&gt; -120.2], ['lat' =&gt; 40.7, 'lng' =&gt; -120.95], ['lat' =&gt; 43.252, 'lng' =&gt; -126.453] ]</li>
+</ul>
+
+<p>Returns float</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-smi">$response</span> <span class="pl-k">=</span>  <span class="pl-c1">\GeometryLibrary\</span><span class="pl-c1">SphericalUtil</span><span class="pl-k">::</span>computeLength([ </span>
+<span class="pl-s1">                [<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">38.5</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">120.2</span>], </span>
+<span class="pl-s1">                [<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">40.7</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">120.95</span>], </span>
+<span class="pl-s1">                [<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">43.252</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">126.453</span>]</span>
+<span class="pl-s1">              ]);</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">  <span class="pl-c1">echo</span> <span class="pl-smi">$response</span>; <span class="pl-c">//float 788906.98459431</span></span>
+<span class="pl-s1"></span></pre></div>
+
+<hr>
+
+<p><a name="computeArea"></a>
+<strong><code>computeArea( $path )</code></strong> - Returns the area of a closed path.</p>
+
+<ul>
+<li>
+<code>$path</code> - [ ['lat' =&gt; 38.5, 'lng' =&gt; -120.2], ['lat' =&gt; 40.7, 'lng' =&gt; -120.95], ['lat' =&gt; 43.252, 'lng' =&gt; -126.453] ]</li>
+</ul>
+
+<p>Returns float</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-smi">$response</span> <span class="pl-k">=</span>  <span class="pl-c1">\GeometryLibrary\</span><span class="pl-c1">SphericalUtil</span><span class="pl-k">::</span>computeArea([ </span>
+<span class="pl-s1">                [<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">38.5</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">120.2</span>], </span>
+<span class="pl-s1">                [<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">40.7</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">120.95</span>], </span>
+<span class="pl-s1">                [<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">43.252</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">126.453</span>]</span>
+<span class="pl-s1">              ]);</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">  <span class="pl-c1">echo</span> <span class="pl-smi">$response</span>; <span class="pl-c">//float 44766785529.143</span></span>
+<span class="pl-s1"></span></pre></div>
+
+<hr>
+
+<p><a name="computeSignedArea"></a>
+<strong><code>computeSignedArea( $path )</code></strong> - Returns the signed area of a closed path.</p>
+
+<ul>
+<li>
+<code>$path</code> - [ ['lat' =&gt; 38.5, 'lng' =&gt; -120.2], ['lat' =&gt; 40.7, 'lng' =&gt; -120.95], ['lat' =&gt; 43.252, 'lng' =&gt; -126.453] ]</li>
+</ul>
+
+<p>Returns float</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-smi">$response</span> <span class="pl-k">=</span>  <span class="pl-c1">\GeometryLibrary\</span><span class="pl-c1">SphericalUtil</span><span class="pl-k">::</span>computeSignedArea([ </span>
+<span class="pl-s1">                [<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">38.5</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">120.2</span>], </span>
+<span class="pl-s1">                [<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">40.7</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">120.95</span>], </span>
+<span class="pl-s1">                [<span class="pl-s"><span class="pl-pds">'</span>lat<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">43.252</span>, <span class="pl-s"><span class="pl-pds">'</span>lng<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-k">-</span><span class="pl-c1">126.453</span>]</span>
+<span class="pl-s1">              ]);</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">  <span class="pl-c1">echo</span> <span class="pl-smi">$response</span>; <span class="pl-c">//float 44766785529.143</span></span>
+<span class="pl-s1"></span></pre></div>
+
+<hr>
+
+<h2>
+<a id="support" class="anchor" href="#support" aria-hidden="true"><span class="octicon octicon-link"></span></a>Support</h2>
+
+<p><a href="https://github.com/alexpechkarev/geometry-library/issues">Please open an issue on GitHub</a></p>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>Geometry Library Google Maps API V3 is released under the MIT License. See the bundled
+<a href="https://github.com/alexpechkarev/geometry-library/blob/master/LICENSE">LICENSE</a>
+file for details.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Geometry-library maintained by <a href="https://github.com/alexpechkarev">alexpechkarev</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
