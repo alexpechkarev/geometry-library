@@ -135,8 +135,8 @@ Available methods
 <a name="containsLocation"></a>
 **`containsLocation( $point, $polygon, $geodesic = false )`** - To find whether a given point falls within a polygon
 
-`$point` - array ['lat' => 38.5, 'lng' => -120.2 ]
-`$polygon` - array [ ['lat' => 38.5, 'lng' => -120.2], ['lat' => 40.7, 'lng' => -120.95], ['lat' => 43.252, 'lng' => -126.453]]
+`$point` -  ['lat' => 38.5, 'lng' => -120.2 ]
+`$polygon` - [ ['lat' => 38.5, 'lng' => -120.2], ['lat' => 40.7, 'lng' => -120.95], ['lat' => 43.252, 'lng' => -126.453]]
 `$geodesic` - boolean
 
 Returns boolean
@@ -160,8 +160,8 @@ $response =  \GeometryLibrary\PolyUtil::containsLocation(
 <a name="isLocationOnEdge"></a>
 **`isLocationOnEdge( $point, $polygon, $tolerance = self::DEFAULT_TOLERANCE, $geodesic = true )`** - To determine whether a point falls on or near a polyline, or on or near the edge of a polygon, within a specified tolerance in meters.
 
-`$point` - array ['lat' => 25.774, 'lng' => -80.190 ]
-`$polygon` - array [ ['lat' => 38.5, 'lng' => -120.2], ['lat' => 40.7, 'lng' => -120.95], ['lat' => 43.252, 'lng' => -126.453]]
+`$point` -  ['lat' => 25.774, 'lng' => -80.190 ]
+`$polygon` -  [ ['lat' => 38.5, 'lng' => -120.2], ['lat' => 40.7, 'lng' => -120.95], ['lat' => 43.252, 'lng' => -126.453]]
 `$tolerance` -  tolerance value in degrees
 `$geodesic` - boolean
 
@@ -185,8 +185,8 @@ $response =  \GeometryLibrary\PolyUtil::isLocationOnEdge(
 <a name="isLocationOnPath"></a>
 **`isLocationOnPath( $point, $polygon, $tolerance = self::DEFAULT_TOLERANCE, $geodesic = true )`** - To determine whether a point falls on or near a polyline, within a specified tolerance in meters
 
-`$point` - array ['lat' => 25.774, 'lng' => -80.190 ]
-`$polygon` - array [ ['lat' => 38.5, 'lng' => -120.2], ['lat' => 40.7, 'lng' => -120.95], ['lat' => 43.252, 'lng' => -126.453]]
+`$point` -  ['lat' => 25.774, 'lng' => -80.190 ]
+`$polygon` -  [ ['lat' => 38.5, 'lng' => -120.2], ['lat' => 40.7, 'lng' => -120.95], ['lat' => 43.252, 'lng' => -126.453]]
 `$tolerance` -  tolerance value in degrees
 `$geodesic` - boolean
 
@@ -239,7 +239,7 @@ $response =  \GeometryLibrary\PolyUtil::decode('_p~iF~ps|U_ulLnnqC_mqNvxq`@');
 <a name="encode"></a>
 **`encode( $path )`** - Encodes a sequence of LatLngs into an encoded path string.
 
-`$path` - array [ ['lat' => 38.5, 'lng' => -120.2], ['lat' => 40.7, 'lng' => -120.95], ['lat' => 43.252, 'lng' => -126.453] ]
+`$path` -  [ ['lat' => 38.5, 'lng' => -120.2], ['lat' => 40.7, 'lng' => -120.95], ['lat' => 43.252, 'lng' => -126.453] ]
 
 Returns string
 
@@ -260,8 +260,8 @@ $response =  \GeometryLibrary\PolyUtil::encode(
 <a name="computeHeading"></a>
 **`computeHeading( $from, $to )`** - Returns the heading from one LatLng to another LatLng.
 
-`$from` - array ['lat' => 38.5, 'lng' => -120.2]
-`$to` - array ['lat' => 40.7, 'lng' => -120.95]
+`$from` -  ['lat' => 38.5, 'lng' => -120.2]
+`$to` -  ['lat' => 40.7, 'lng' => -120.95]
 
 Returns int
 
@@ -279,11 +279,11 @@ $response =  \GeometryLibrary\SphericalUtil::computeHeading(
 <a name="computeOffset"></a>
 **`computeOffset( $from, $distance, $heading )`** - Returns the LatLng resulting from moving a distance from an origin in the specified heading.
 
-`$from` - array ['lat' => 38.5, 'lng' => -120.2]
+`$from` -  ['lat' => 38.5, 'lng' => -120.2]
 `$distance` - number, the distance to travel
 `$heading` - number, the heading in degrees clockwise from north
 
-Returns array ['lat' => 38.5, 'lng' => -120.2]
+Returns array
 
 ```php
 
@@ -300,11 +300,11 @@ $response =  \GeometryLibrary\SphericalUtil::computeOffset(['lat' => 25.775, 'ln
 <a name="computeOffsetOrigin"></a>
 **`computeOffsetOrigin( $from, $distance, $heading )`** - Returns the location of origin when provided with a LatLng destination, meters travelled and original heading. Headings are expressed in degrees clockwise from North. 
 
-`$from` - array ['lat' => 38.5, 'lng' => -120.2]
+`$from` -  ['lat' => 38.5, 'lng' => -120.2]
 `$distance` - number, the distance to travel
 `$heading` - number, the heading in degrees clockwise from north
 
-Returns array ['lat' => 38.5, 'lng' => -120.2]
+Returns array 
 
 ```php
 
@@ -321,11 +321,11 @@ $response =  \GeometryLibrary\SphericalUtil::computeOffsetOrigin(['lat' => 25.77
 <a name="interpolate"></a>
 **`interpolate( $from, $to, $fraction )`** - Returns the LatLng which lies the given fraction of the way between the origin LatLng and the destination LatLng.
 
-`$from` - array ['lat' => 38.5, 'lng' => -120.2]
-`$to` - array ['lat' => 38.5, 'lng' => -120.2]
+`$from` -  ['lat' => 38.5, 'lng' => -120.2]
+`$to` -  ['lat' => 38.5, 'lng' => -120.2]
 `$fraction` - number, a fraction of the distance to travel
 
-Returns array ['lat' => 38.5, 'lng' => -120.2]
+Returns array
 
 ```php
 
@@ -343,8 +343,8 @@ $response =  \GeometryLibrary\SphericalUtil::interpolate(['lat' => 25.775, 'lng'
 <a name="computeDistanceBetween"></a>
 **`computeDistanceBetween( $from, $to )`** - Returns the distance, in meters, between two LatLngs. You can optionally specify a custom radius. The radius defaults to the radius of the Earth.
 
-`$from` - array ['lat' => 38.5, 'lng' => -120.2]
-`$to` - array ['lat' => 38.5, 'lng' => -120.2]
+`$from` - ['lat' => 38.5, 'lng' => -120.2]
+`$to` - ['lat' => 38.5, 'lng' => -120.2]
 
 Returns float
 
@@ -360,7 +360,7 @@ $response =  \GeometryLibrary\SphericalUtil::computeDistanceBetween(['lat' => 25
 <a name="computeLength"></a>
 **`computeLength( $path )`** - Returns the length of the given path, in meters, on Earth.
 
-`$path` - array [ ['lat' => 38.5, 'lng' => -120.2], ['lat' => 40.7, 'lng' => -120.95], ['lat' => 43.252, 'lng' => -126.453] ]
+`$path` - [ ['lat' => 38.5, 'lng' => -120.2], ['lat' => 40.7, 'lng' => -120.95], ['lat' => 43.252, 'lng' => -126.453] ]
 
 Returns float
 
@@ -380,7 +380,7 @@ $response =  \GeometryLibrary\SphericalUtil::computeLength([
 <a name="computeArea"></a>
 **`computeArea( $path )`** - Returns the area of a closed path.
 
-`$path` - array [ ['lat' => 38.5, 'lng' => -120.2], ['lat' => 40.7, 'lng' => -120.95], ['lat' => 43.252, 'lng' => -126.453] ]
+`$path` - [ ['lat' => 38.5, 'lng' => -120.2], ['lat' => 40.7, 'lng' => -120.95], ['lat' => 43.252, 'lng' => -126.453] ]
 
 Returns float
 
@@ -400,7 +400,7 @@ $response =  \GeometryLibrary\SphericalUtil::computeArea([
 <a name="computeSignedArea"></a>
 **`computeSignedArea( $path )`** - Returns the signed area of a closed path.
 
-`$path` - array [ ['lat' => 38.5, 'lng' => -120.2], ['lat' => 40.7, 'lng' => -120.95], ['lat' => 43.252, 'lng' => -126.453] ]
+`$path` - [ ['lat' => 38.5, 'lng' => -120.2], ['lat' => 40.7, 'lng' => -120.95], ['lat' => 43.252, 'lng' => -126.453] ]
 
 Returns float
 
