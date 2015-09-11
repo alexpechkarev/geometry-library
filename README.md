@@ -1,5 +1,5 @@
 ## Geometry Library Google Maps API V3 
-PHP geometry library provides utility functions for the computation of geometric data on the surface of the Earth. Code ported from Google [Maps Android API] (https://github.com/googlemaps/android-maps-utils/).
+PHP Geometry Library provides utility functions for the computation of geometric data on the surface of the Earth. Code ported from Google [Maps Android API] (https://github.com/googlemaps/android-maps-utils/).
 
 Features
 ------------
