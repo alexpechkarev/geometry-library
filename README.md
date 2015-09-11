@@ -135,8 +135,8 @@ Available methods
 <a name="containsLocation"></a>
 **`containsLocation( $point, $polygon, $geodesic = false )`** - To find whether a given point falls within a polygon
 
-`$point` -  ['lat' => 38.5, 'lng' => -120.2 ]
-`$polygon` - [ ['lat' => 38.5, 'lng' => -120.2], ['lat' => 40.7, 'lng' => -120.95], ['lat' => 43.252, 'lng' => -126.453]]
+`$point` -  ['lat' => 38.5, 'lng' => -120.2 ]--
+`$polygon` - [ ['lat' => 38.5, 'lng' => -120.2], ['lat' => 40.7, 'lng' => -120.95], ['lat' => 43.252, 'lng' => -126.453]]--
 `$geodesic` - boolean
 
 Returns boolean
