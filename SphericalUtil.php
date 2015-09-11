@@ -1,4 +1,4 @@
-<?php namespace GeometryLibrary;
+<?php namespace BPB;
 
 /*
  * Copyright 2013 Google Inc.
@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-use GeometryLibrary\MathUtil;
+use BPB\MathUtil;
 
 class SphericalUtil {
     
@@ -63,7 +63,7 @@ class SphericalUtil {
                 $sinDistance * $cosFromLat * sin($heading),
                 $cosDistance - $sinFromLat * $sinLat);
         
-        return ['lat' => rad2deg(asin($sinLat)), rad2deg($fromLng + $dLng)];
+        return ['lat' => rad2deg(asin($sinLat)), 'lng' =>rad2deg($fromLng + $dLng)];
     }    
     
     
@@ -189,8 +189,8 @@ class SphericalUtil {
         $prevLat = deg2rad($prev['lat']);
         $prevLng = deg2rad($prev['lng']);
         foreach($path as $point) {
-            $lat = deg2rad($point.latitude);
-            $lng = deg2rad($point.longitude);
+            $lat = deg2rad($point['lat']);
+            $lng = deg2rad($point['lng']);
             $length += self::distanceRadians($prevLat, $prevLng, $lat, $lng);
             $prevLat = $lat;
             $prevLng = $lng;
