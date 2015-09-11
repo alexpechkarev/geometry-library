@@ -1,4 +1,4 @@
-<?php namespace BPB;
+<?php namespace GeometryLibrary;
 
 /*
  * Copyright 2013 Google Inc.
@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-use BPB\MathUtil;
+use GeometryLibrary\MathUtil;
 
 class SphericalUtil {
     
