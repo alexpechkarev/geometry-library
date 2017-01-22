@@ -80,6 +80,13 @@ $response =  \GeometryLibrary\PolyUtil::containsLocation(
              
   echo $response; // false    
   
+$response =  \GeometryLibrary\PolyUtil::distanceToLine(
+              ['lat' => 61.387002, 'lng' => 23.890636], // point array [lat, lng]
+              ['lat' => 61.487002, 'lng' => 23.790636], // line startpoint array [lat, lng]
+              ['lat' => 60.48047, 'lng' => 22.052754] // line endpoint array [lat, lng]
+             );  
+             
+  echo $response; // 12325.124046196 in meters
   
 $response =  \GeometryLibrary\PolyUtil::encode(
               [ 
