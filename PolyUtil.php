@@ -19,6 +19,7 @@
  */
 
 use GeometryLibrary\MathUtil;
+use GeometryLibrary\SphericalUtil;
 
 class PolyUtil {
     
@@ -248,8 +249,42 @@ class PolyUtil {
         $denom = ($a * $a + $b * $b) * ($c * $c + $d * $d);
         return $denom <= 0 ? 1 : ($a * $d - $b * $c) / sqrt($denom);
     }    
-    
-    
+  
+    /**
+     * Computes the distance on the sphere between the point p and the line segment start to end.
+     *
+     * @param p the point to be measured
+     * @param start the beginning of the line segment
+     * @param end the end of the line segment
+     * @return the distance in meters (assuming spherical earth)
+     */
+     
+    public static function distanceToLine($p, $start, $end) {
+        if ($start == $end) {
+            return SphericalUtil::computeDistanceBetween($end, $p);
+        }
+
+        $s0lat = deg2rad($p['lat']);
+        $s0lng = deg2rad($p['lng']);
+        $s1lat = deg2rad($start['lat']);
+        $s1lng = deg2rad($start['lng']);
+        $s2lat = deg2rad($end['lat']);
+        $s2lng = deg2rad($end['lng']);
+
+        $s2s1lat = $s2lat - $s1lat;
+        $s2s1lng = $s2lng - $s1lng;
+        $u = (($s0lat - $s1lat) * $s2s1lat + ($s0lng - $s1lng) * $s2s1lng)
+                / ($s2s1lat * $s2s1lat + $s2s1lng * $s2s1lng);
+        if ($u <= 0) {
+            return SphericalUtil::computeDistanceBetween($p, $start);
+        }
+        if ($u >= 1) {
+            return SphericalUtil::computeDistanceBetween($p, $end);
+        }
+        $sa = array('lat' => $p['lat'] - $start['lat'], 'lng' => $p['lng'] - $start['lng']);
+        $sb = array('lat' => ($u * ($end['lat'] - $start['lat'])), 'lng' => ($u * ($end['lng'] - $start['lng'])));
+        return SphericalUtil::computeDistanceBetween($sa, $sb);
+    }
     
     private static function isOnSegmentGC( $lat1, $lng1, $lat2, $lng2, $lat3, $lng3, $havTolerance) {
         
