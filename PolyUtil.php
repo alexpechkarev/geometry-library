@@ -250,7 +250,39 @@ class PolyUtil {
         return $denom <= 0 ? 1 : ($a * $d - $b * $c) / sqrt($denom);
     }    
   
-    /**
+    
+    private static function isOnSegmentGC( $lat1, $lng1, $lat2, $lng2, $lat3, $lng3, $havTolerance) {
+        
+        $havDist13 = MathUtil::havDistance($lat1, $lat3, $lng1 - $lng3);
+        if ($havDist13 <= $havTolerance) {
+            return true;
+        }
+        $havDist23 = MathUtil::havDistance($lat2, $lat3, $lng2 - $lng3);
+        if ($havDist23 <= $havTolerance) {
+            return true;
+        }
+        $sinBearing = self::sinDeltaBearing($lat1, $lng1, $lat2, $lng2, $lat3, $lng3);
+        $sinDist13 = MathUtil::sinFromHav($havDist13);
+        $havCrossTrack = MathUtil::havFromSin($sinDist13 * $sinBearing);
+        if ($havCrossTrack > $havTolerance) {
+            return false;
+        }
+        $havDist12 = MathUtil::havDistance($lat1, $lat2, $lng1 - $lng2);
+        $term = $havDist12 + $havCrossTrack * (1 - 2 * $havDist12);
+        if ($havDist13 > $term || $havDist23 > $term) {
+            return false;
+        }
+        if ($havDist12 < 0.74) {
+            return true;
+        }
+        $cosCrossTrack = 1 - 2 * $havCrossTrack;
+        $havAlongTrack13 = ($havDist13 - $havCrossTrack) / $cosCrossTrack;
+        $havAlongTrack23 = ($havDist23 - $havCrossTrack) / $cosCrossTrack;
+        $sinSumAlongTrack = MathUtil::sinSumFromHav($havAlongTrack13, $havAlongTrack23);
+        return $sinSumAlongTrack > 0;  // Compare with half-circle == PI using sign of sin().
+    }
+    
+     /**
      * Computes the distance on the sphere between the point p and the line segment start to end.
      *
      * @param p the point to be measured
@@ -284,37 +316,6 @@ class PolyUtil {
         $sa = array('lat' => $p['lat'] - $start['lat'], 'lng' => $p['lng'] - $start['lng']);
         $sb = array('lat' => ($u * ($end['lat'] - $start['lat'])), 'lng' => ($u * ($end['lng'] - $start['lng'])));
         return SphericalUtil::computeDistanceBetween($sa, $sb);
-    }
-    
-    private static function isOnSegmentGC( $lat1, $lng1, $lat2, $lng2, $lat3, $lng3, $havTolerance) {
-        
-        $havDist13 = MathUtil::havDistance($lat1, $lat3, $lng1 - $lng3);
-        if ($havDist13 <= $havTolerance) {
-            return true;
-        }
-        $havDist23 = MathUtil::havDistance($lat2, $lat3, $lng2 - $lng3);
-        if ($havDist23 <= $havTolerance) {
-            return true;
-        }
-        $sinBearing = self::sinDeltaBearing($lat1, $lng1, $lat2, $lng2, $lat3, $lng3);
-        $sinDist13 = MathUtil::sinFromHav($havDist13);
-        $havCrossTrack = MathUtil::havFromSin($sinDist13 * $sinBearing);
-        if ($havCrossTrack > $havTolerance) {
-            return false;
-        }
-        $havDist12 = MathUtil::havDistance($lat1, $lat2, $lng1 - $lng2);
-        $term = $havDist12 + $havCrossTrack * (1 - 2 * $havDist12);
-        if ($havDist13 > $term || $havDist23 > $term) {
-            return false;
-        }
-        if ($havDist12 < 0.74) {
-            return true;
-        }
-        $cosCrossTrack = 1 - 2 * $havCrossTrack;
-        $havAlongTrack13 = ($havDist13 - $havCrossTrack) / $cosCrossTrack;
-        $havAlongTrack23 = ($havDist23 - $havCrossTrack) / $cosCrossTrack;
-        $sinSumAlongTrack = MathUtil::sinSumFromHav($havAlongTrack13, $havAlongTrack23);
-        return $sinSumAlongTrack > 0;  // Compare with half-circle == PI using sign of sin().
     }
     
     /**
