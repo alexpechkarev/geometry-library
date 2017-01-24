@@ -80,6 +80,13 @@ $response =  \GeometryLibrary\PolyUtil::containsLocation(
              
   echo $response; // false    
   
+$response =  \GeometryLibrary\PolyUtil::distanceToLine(
+              ['lat' => 61.387002, 'lng' => 23.890636], // point array [lat, lng]
+              ['lat' => 61.487002, 'lng' => 23.790636], // line startpoint array [lat, lng]
+              ['lat' => 60.48047, 'lng' => 22.052754] // line endpoint array [lat, lng]
+             );  
+             
+  echo $response; // 12325.124046196 in meters
   
 $response =  \GeometryLibrary\PolyUtil::encode(
               [ 
@@ -116,6 +123,7 @@ Available methods
 * [`containsLocation($point, $polygon, $geodesic = false)`](#containsLocation)
 * [`isLocationOnEdge($point, $polygon, $tolerance = self::DEFAULT_TOLERANCE, $geodesic = true)`](#isLocationOnEdge)
 * [`isLocationOnPath($point, $polyline, $tolerance = self::DEFAULT_TOLERANCE, $geodesic = true)`](#isLocationOnPath)
+* [`distanceToLine($p, $start, $end)`](#distanceToLine)
 * [`decode($encodedPath)`](#decode)
 * [`encode($path)`](#encode)
 
@@ -203,6 +211,28 @@ $response =  \GeometryLibrary\PolyUtil::isLocationOnPath(
               ])  ;
               
   echo $response; // true
+
+```
+---
+
+<a name="distanceToLine"></a>
+**`distanceToLine( $p, $start, $end )`** - To calculate distance from a point to line start->end on sphere.
+
+* `$p` -  ['lat' => 61.387002, 'lng' => 23.890636]
+* `$start` -  ['lat' => 61.487002, 'lng' => 23.790636]
+* `$end` -  ['lat' => 60.48047, 'lng' => 22.052754]
+
+Returns distance from a point to line
+
+```php
+
+$response =  \GeometryLibrary\PolyUtil::distanceToLine(
+              ['lat' => 61.387002, 'lng' => 23.890636], // point array [lat, lng]
+              ['lat' => 61.487002, 'lng' => 23.790636], // line startpoint array [lat, lng]
+              ['lat' => 60.48047, 'lng' => 22.052754] // line endpoint array [lat, lng]
+             );  
+             
+  echo $response; // 12325.124046196 in meters
 
 ```
 ---
