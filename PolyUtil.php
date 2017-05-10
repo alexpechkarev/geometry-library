@@ -200,7 +200,7 @@ class PolyUtil {
                 if (max($lat1, $lat2) >= $minAcceptable && min($lat1, $lat2) <= $maxAcceptable) {
                     // We offset longitudes by -lng1; the implicit x1 is 0.
                     $x2 = MathUtil::wrap($lng2 - $lng1, -M_PI, M_PI);
-                    $x3Base = MathUtil::wrap(lng3 - lng1, -M_PI, M_PI);
+                    $x3Base = MathUtil::wrap($lng3 - $lng1, -M_PI, M_PI);
                     $xTry[0] = $x3Base;
                     // Also explore wrapping of x3Base around the world in both directions.
                     $xTry[1] = $x3Base + 2 * M_PI;
