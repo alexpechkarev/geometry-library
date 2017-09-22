@@ -1,7 +1,7 @@
 {
 	"name": "alexpechkarev/geometry-library",
 	"description": "PHP Geometry library provides utility functions for the computation of geometric data on the surface of the Earth.",
-        "version":"1.0.0",
+        "version":"1.0.1",
 	"keywords": ["google maps geometry library", "php geometry library", "spherical geometry utilities", "encoding and decoding polyline paths utilities", "computations polygons and polylines"],
         "homepage":"https://alexpechkarev.github.io/geometry-library/",
 	"license": "MIT",
