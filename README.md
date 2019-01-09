@@ -1,16 +1,16 @@
 ## Geometry Library Google Maps API V3 
-PHP Geometry Library provides utility functions for the computation of geometric data on the surface of the Earth. Code ported from Google [Maps Android API] (https://github.com/googlemaps/android-maps-utils/).
+PHP Geometry Library provides utility functions for the computation of geometric data on the surface of the Earth. Code ported from Google (Maps Android API)[https://github.com/googlemaps/android-maps-utils/].
 
 
 Features
 ------------
-* [Spherical] (https://developers.google.com/maps/documentation/javascript/reference#spherical) contains spherical geometry utilities allowing you to compute angles, distances and areas from latitudes and longitudes.
-* [Poly] (https://developers.google.com/maps/documentation/javascript/reference#poly) utility functions for computations involving polygons and polylines.
-* [Encoding] (https://developers.google.com/maps/documentation/javascript/reference#encoding) utilities for polyline encoding and decoding.
+* (Spherical)[https://developers.google.com/maps/documentation/javascript/reference#spherical] contains spherical geometry utilities allowing you to compute angles, distances and areas from latitudes and longitudes.
+* (Poly)[https://developers.google.com/maps/documentation/javascript/reference#poly] utility functions for computations involving polygons and polylines.
+* (Encoding)[https://developers.google.com/maps/documentation/javascript/reference#encoding] utilities for polyline encoding and decoding.
 
 Dependency
 ------------
-* [PHP 5] (http://php.net/)
+* [PHP 5](http://php.net/)
 
 
 
