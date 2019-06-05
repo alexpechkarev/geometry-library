@@ -373,8 +373,8 @@ class PolyUtil {
             $dLat = $lat - $lastLat;
             $dLng = $lng - $lastLng;
 
-            self::enc($dLat, $result);
-            self::enc($dLng, $result);
+            $result.=self::enc($dLat);
+            $result.=self::enc($dLng);
 
             $lastLat = $lat;
             $lastLng = $lng;
@@ -384,10 +384,12 @@ class PolyUtil {
     
     
     
-    private static function enc($v, $result) {
+    private static function enc($v) {
 
         $v = $v < 0 ? ~($v << 1) : $v << 1;
 
+        $result = '';
+        
         while ($v >= 0x20) {
             $result.= chr((int) ((0x20 | ($v & 0x1f)) + 63));
             $v >>= 5;
@@ -395,6 +397,7 @@ class PolyUtil {
         
         $result.=chr((int) ($v + 63));
         
+        return $result;
     }    
     
 }
