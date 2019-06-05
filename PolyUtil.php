@@ -23,10 +23,7 @@ use GeometryLibrary\SphericalUtil;
 
 class PolyUtil {
     
-    const DEFAULT_TOLERANCE = 0.1;  // meters.  
-    
-    private static $result = '';
-
+    const DEFAULT_TOLERANCE = 0.1;  // meters.
 
     /**
      * Returns tan(latitude-at-lng3) on the great circle (lat1, lng1) to (lat2, lng2). lng1==0.
@@ -376,13 +373,13 @@ class PolyUtil {
             $dLat = $lat - $lastLat;
             $dLng = $lng - $lastLng;
 
-            self::enc($dLat);
-            self::enc($dLng);
+            $result.=self::enc($dLat);
+            $result.=self::enc($dLng);
 
             $lastLat = $lat;
             $lastLng = $lng;
         }
-        return self::$result;
+        return $result;
     }    
     
     
@@ -391,13 +388,16 @@ class PolyUtil {
 
         $v = $v < 0 ? ~($v << 1) : $v << 1;
 
+        $result = '';
+        
         while ($v >= 0x20) {
-            self::$result.= chr((int) ((0x20 | ($v & 0x1f)) + 63));
+            $result.= chr((int) ((0x20 | ($v & 0x1f)) + 63));
             $v >>= 5;
         }
         
-        self::$result.=chr((int) ($v + 63));
+        $result.=chr((int) ($v + 63));
         
+        return $result;
     }    
     
 }
