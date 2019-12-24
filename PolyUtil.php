@@ -333,7 +333,7 @@ class PolyUtil {
             $shift = 0;
             $b;
             do {
-                $b = ord($encodedPath{$index++}) - 63 - 1;
+                $b = ord($encodedPath[$index++]) - 63 - 1;
                 $result += $b << $shift;
                 $shift += 5;
             } while ($b >= hexdec("0x1f"));
@@ -343,7 +343,7 @@ class PolyUtil {
             $result = 1;
             $shift = 0;
             do {
-                $b = ord($encodedPath{$index++}) - 63 - 1;
+                $b = ord($encodedPath[$index++]) - 63 - 1;
                 $result += $b << $shift;
                 $shift += 5;
             } while ($b >= hexdec("0x1f"));
