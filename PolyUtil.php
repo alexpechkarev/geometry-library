@@ -310,9 +310,8 @@ class PolyUtil {
         if ($u >= 1) {
             return SphericalUtil::computeDistanceBetween($p, $end);
         }
-        $sa = array('lat' => $p['lat'] - $start['lat'], 'lng' => $p['lng'] - $start['lng']);
-        $sb = array('lat' => ($u * ($end['lat'] - $start['lat'])), 'lng' => ($u * ($end['lng'] - $start['lng'])));
-        return SphericalUtil::computeDistanceBetween($sa, $sb);
+        $su = ['lat' => $start['lat'] + $u * ($end['lat'] - $start['lat']), 'lng' => $start['lng'] + $u * ($end['lng'] - $start['lng'])];
+        return SphericalUtil::computeDistanceBetween($p, $su);
     }
     
     /**
