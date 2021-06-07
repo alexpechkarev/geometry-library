@@ -165,7 +165,7 @@ class PolyUtil {
         $havTolerance = MathUtil::hav($tolerance);
         $lat3 = deg2rad($point['lat']);
         $lng3 = deg2rad($point['lng']);
-        $prev = !empty($closed) ? $poly[$size - 1] : 0;
+        $prev = !empty($closed) ? $poly[$size - 1] : $poly[0];
         $lat1 = deg2rad($prev['lat']);
         $lng1 = deg2rad($prev['lng']);
         
