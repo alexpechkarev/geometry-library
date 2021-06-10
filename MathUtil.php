@@ -22,7 +22,15 @@ class MathUtil {
      * The earth's radius, in meters.
      * Mean radius as defined by IUGG.
      */
-    const EARTH_RADIUS = 6371009;
+    
+    public static $earth_radius = 6371009;
+
+    /**
+     * Change the earth radius for different earth points
+     */
+    public static function changeEarthRadius($newRadius) {
+        self::$earth_radius = $newRadius;
+    }
 
     /**
      * Restrict x to the range [low, high].

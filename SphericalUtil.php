@@ -49,7 +49,7 @@ class SphericalUtil {
      * @param heading  The heading in degrees clockwise from north.
      */
     public static function computeOffset($from, $distance, $heading) {
-        $distance /= MathUtil::EARTH_RADIUS;
+        $distance /= MathUtil::$earth_radius;
         $heading = deg2rad($heading);
         // http://williams.best.vwh.net/avform.htm#LL
         $fromLat = deg2rad($from['lat']);
@@ -79,7 +79,7 @@ class SphericalUtil {
      */
     public static function computeOffsetOrigin($to, $distance,  $heading) {
         $heading = deg2rad($heading);
-        $distance /= MathUtil::EARTH_RADIUS;
+        $distance /= MathUtil::$earth_radius;
         // http://lists.maptools.org/pipermail/proj/2008-October/003939.html
         $n1 = cos($distance);
         $n2 = sin($distance) * cos($heading);
@@ -173,7 +173,7 @@ class SphericalUtil {
      * Returns the distance between two LatLngs, in meters.
      */
     public static function computeDistanceBetween( $from, $to) {
-        return self::computeAngleBetween($from, $to) * MathUtil::EARTH_RADIUS;
+        return self::computeAngleBetween($from, $to) * MathUtil::$earth_radius;
     }  
     
     
@@ -195,7 +195,7 @@ class SphericalUtil {
             $prevLat = $lat;
             $prevLng = $lng;
         }
-        return $length * MathUtil::EARTH_RADIUS;
+        return $length * MathUtil::$earth_radius;
     }
     
     
@@ -217,7 +217,7 @@ class SphericalUtil {
      * @return The loop's area in square meters.
      */
     public static function computeSignedArea($path) {
-        return self::computeSignedAreaP($path, MathUtil::EARTH_RADIUS);
+        return self::computeSignedAreaP($path, MathUtil::$earth_radius);
     }  
     
 /**

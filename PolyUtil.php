@@ -161,7 +161,7 @@ class PolyUtil {
             return false;
         }
         
-        $tolerance = $toleranceEarth / MathUtil::EARTH_RADIUS;
+        $tolerance = $toleranceEarth / MathUtil::$earth_radius;
         $havTolerance = MathUtil::hav($tolerance);
         $lat3 = deg2rad($point['lat']);
         $lng3 = deg2rad($point['lng']);
