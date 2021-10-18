@@ -21,9 +21,13 @@ class MathUtil {
   /**
      * The earth's radius, in meters.
      * Mean radius as defined by IUGG.
-     */
-    
-    public static $earth_radius = 6371009;
+     * https://developers.google.com/maps/documentation/javascript/reference/geometry
+     * Utility functions for computing geodesic angles, distances and areas. 
+     * The default radius is Earth's radius of 6378137 meters.
+     *
+     * 2021-10-18 - Earth's radius updated in accordance with Google Maps JavaScript API;
+     */    
+    public static $earth_radius = 6378137;
 
     /**
      * Change the earth radius for different earth points
