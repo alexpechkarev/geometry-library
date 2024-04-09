@@ -135,7 +135,10 @@ class SphericalUtil {
         $angle = self::computeAngleBetween($from, $to);
         $sinAngle = sin($angle);
         if ($sinAngle < 1E-6) {
-            return $from;
+            return [
+                'lat' => $from['lat'] + $fraction * ($to['lat'] - $from['lat']),
+                'lng' => $from['lng'] + $fraction * ($to['lng'] - $from['lng'])
+            ];
         }
         $a = sin((1 - $fraction) * $angle) / $sinAngle;
         $b = sin($fraction * $angle) / $sinAngle;
