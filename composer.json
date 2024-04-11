@@ -1,7 +1,7 @@
 {
 	"name": "alexpechkarev/geometry-library",
 	"description": "PHP Geometry library provides utility functions for the computation of geometric data on the surface of the Earth.",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"keywords": [
 		"google maps geometry library",
 		"php geometry library",
