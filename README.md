@@ -20,14 +20,14 @@ Installation
 Issue following command:
 
 ```php
-composer require alexpechkarev/geometry-library:1.0.4
+composer require alexpechkarev/geometry-library:1.0.5
 ```
 
 Alternatively  edit composer.json by adding following line and run **`composer update`**
 ```php
 "require": { 
 		....,
-		"alexpechkarev/geometry-library":"1.0.4",
+		"alexpechkarev/geometry-library":"1.0.5",
 	
 	},
 ```
