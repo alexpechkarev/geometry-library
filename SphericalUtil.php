@@ -84,7 +84,7 @@ class SphericalUtil {
         $n1 = cos($distance);
         $n2 = sin($distance) * cos($heading);
         $n3 = sin($distance) * sin($heading);
-        $n4 = sin(rad2deg($to['lat']));
+        $n4 = sin(deg2rad($to['lat']));
         // There are two solutions for b. b = n2 * n4 +/- sqrt(), one solution results
         // in the latitude outside the [-90, 90] range. We first try one solution and
         // back off to the other if we are outside that range.
@@ -107,7 +107,7 @@ class SphericalUtil {
             // No solution which would make sense in LatLng-space.
             return null;
         }
-        $fromLngRadians = rad2deg($to['lng']) -
+        $fromLngRadians = deg2rad($to['lng']) -
                 atan2($n3, $n1 * cos($fromLatRadians) - $n2 * sin($fromLatRadians));
         return ['lat' => rad2deg($fromLatRadians), 'lng' => rad2deg($fromLngRadians)];
     }    
